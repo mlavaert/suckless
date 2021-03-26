@@ -3,8 +3,8 @@
 #include <X11/XF86keysym.h>
 
 /* appearance */
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
-static const unsigned int gappx     = 6;        /* gaps between windows */
+static const unsigned int borderpx  = 2;        /* border pixel of windows */
+static const unsigned int gappx     = 10;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systrayspacing = 2;   /* systray spacing */
@@ -105,9 +105,9 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
-        {0,                             XF86XK_AudioRaiseVolume, spawn, {.v = volumeup } },
-        {0,                             XF86XK_AudioLowerVolume, spawn, {.v = volumedown } },
-        {0,                             XF86XK_AudioMute, spawn, {.v = volumemute } },
+	{0,                             XF86XK_AudioRaiseVolume, spawn, {.v = volumeup } },
+	{0,                             XF86XK_AudioLowerVolume, spawn, {.v = volumedown } },
+	{0,                             XF86XK_AudioMute, spawn, {.v = volumemute } },
 };
 
 /* button definitions */
