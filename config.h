@@ -64,16 +64,12 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-static const char *termcmd[]  = { "alacritty", NULL };
 
-static const char *volumeup[] = { "pactl", "set-sink-volume", "0", "+5%", NULL};
-static const char *volumedown[] = { "pactl", "set-sink-volume", "0", "-5%", NULL};
-static const char *volumemute[] = { "pactl", "set-sink-mute", "0", "toggle", NULL};
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
-	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY|ShiftMask,             XK_Return, spawn,          SHCMD("alacritty") },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -105,10 +101,14 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
-	{0,                             XF86XK_AudioRaiseVolume, spawn, {.v = volumeup } },
-	{0,                             XF86XK_AudioLowerVolume, spawn, {.v = volumedown } },
-	{0,                             XF86XK_AudioMute, spawn, {.v = volumemute } },
+	{0,                             XF86XK_AudioRaiseVolume,    spawn, SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5%") },
+	{0,                             XF86XK_AudioLowerVolume,    spawn, SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5%") },
+    {0,                             XF86XK_AudioMute,           spawn, SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle") },
+	{0,                             XF86XK_AudioMicMute,	    spawn, SHCMD("pactl set-source-mute @DEFAULT_SOURCE@ toggle") },
+	{0,                             XF86XK_MonBrightnessUp,	    spawn, SHCMD("xbacklight -inc 15") },
+	{0,                             XF86XK_MonBrightnessDown,   spawn, SHCMD("xbacklight -dec 15") },
 };
+
 
 /* button definitions */
 /* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
@@ -117,7 +117,7 @@ static Button buttons[] = {
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
 	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
 	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
-	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
+	/* { ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } }, */
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
