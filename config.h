@@ -14,15 +14,16 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "monospace:size=10" };
 static const char dmenufont[]       = "monospace:size=10";
-static const char col_gray1[]       = "#222222";
-static const char col_gray2[]       = "#444444";
-static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#005577";
+
+static const char* const nord[]     = { "#2e3440", "#3b4252", "#434c5e", "#4c566a",
+                                        "#d8dee9", "#e5e9f0", "#eceff4", "#8fbcbb", 
+					"#88c0d0", "#81a1c1", "#5e81ac", "#bf616a", 
+					"#d08770", "#ebcb8b", "#a3be8c", "#b48ead" };
+
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
+	[SchemeNorm] = { nord[4], nord[0],  nord[0] },
+	[SchemeSel]  = { nord[0], nord[9],  nord[9] },
 };
 
 /* tagging */
@@ -62,7 +63,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-p", "Open: ", "-m", dmenumon, "-fn", dmenufont, "-nb", nord[0], "-nf", nord[4], "-sb", nord[9], "-sf", nord[0], NULL };
 
 
 static Key keys[] = {
@@ -102,7 +103,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 	{0,                             XF86XK_AudioRaiseVolume,    spawn, SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5%") },
 	{0,                             XF86XK_AudioLowerVolume,    spawn, SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5%") },
-    {0,                             XF86XK_AudioMute,           spawn, SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle") },
+	{0,                             XF86XK_AudioMute,           spawn, SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle") },
 	{0,                             XF86XK_AudioMicMute,	    spawn, SHCMD("pactl set-source-mute @DEFAULT_SOURCE@ toggle") },
 	{0,                             XF86XK_MonBrightnessUp,	    spawn, SHCMD("xbacklight -inc 15") },
 	{0,                             XF86XK_MonBrightnessDown,   spawn, SHCMD("xbacklight -dec 15") },
