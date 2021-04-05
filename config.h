@@ -3,7 +3,7 @@
 #include <X11/XF86keysym.h>
 
 /* appearance */
-static const unsigned int borderpx  = 2;        /* border pixel of windows */
+static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int gappx     = 10;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
@@ -12,7 +12,7 @@ static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display 
 static const int showsystray        = 1;     /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "monospace:size=10" };
+static const char *fonts[]          = { "FiraCode Nerd Font:size=10", "monospace:size=10" };
 static const char dmenufont[]       = "monospace:size=10";
 
 static const char* const nord[]     = { "#2e3440", "#3b4252", "#434c5e", "#4c566a",
@@ -63,7 +63,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-p", "Open: ", "-m", dmenumon, "-fn", dmenufont, "-nb", nord[0], "-nf", nord[4], "-sb", nord[9], "-sf", nord[0], NULL };
+static const char *dmenucmd[] = { "dmenu_run_recent", "-p", "Open: ", "-m", dmenumon, "-fn", dmenufont, "-nb", nord[0], "-nf", nord[4], "-sb", nord[9], "-sf", nord[0], NULL };
 
 #include "focusurgent.c"
 static Key keys[] = {
