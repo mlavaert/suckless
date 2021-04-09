@@ -4,3 +4,5 @@ Includes:
 - dwm
 - slstatus
 
+[suckless.org](https://suckless.org)
+
