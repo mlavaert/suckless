@@ -101,13 +101,13 @@ static Key keys[] = {
     TAGKEYS(                        XK_8,                      7)
     TAGKEYS(                        XK_9,                      8)
     { MODKEY|ShiftMask,             XK_q,      quit,           {0} },
-	{ MODKEY,                       XK_u,      focusurgent,    {0} },
+    { MODKEY,                       XK_u,      focusurgent,    {0} },
     { 0,                            XF86XK_AudioRaiseVolume,   spawn, SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5%") },
     { 0,                            XF86XK_AudioLowerVolume,   spawn, SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5%") },
     { 0,                            XF86XK_AudioMute,          spawn, SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle") },
-    { 0,                            XF86XK_AudioMicMute,	   spawn, SHCMD("pactl set-source-mute @DEFAULT_SOURCE@ toggle") },
-    { 0,                            XF86XK_MonBrightnessUp,	   spawn, SHCMD("xbacklight -inc 15") },
-    { 0,                            XF86XK_MonBrightnessDown,  spawn, SHCMD("xbacklight -dec 15") },
+    { 0,                            XF86XK_AudioMicMute,       spawn, SHCMD("pactl set-source-mute @DEFAULT_SOURCE@ toggle") },
+    { 0,                            XF86XK_MonBrightnessUp,    spawn, SHCMD("xbacklight -inc 10") },
+    { 0,                            XF86XK_MonBrightnessDown,  spawn, SHCMD("xbacklight -dec 10") },
     { MODKEY,                       XK_Escape,                 spawn, SHCMD("slock & xset dpms force off;") },
 };
 
