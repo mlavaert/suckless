@@ -1,3 +1,6 @@
-dwm/dwm
 *.o
+dwm/dwm
 slstatus/slstatus
+st/st
+scroll/scroll
+
