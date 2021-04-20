@@ -69,7 +69,7 @@ static const char *dmenucmd[] = { "dmenu_run_recent", "-p", "Open: ", "-m", dmen
 static Key keys[] = {
     /* modifier                     key        function        argument */
     { MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
-    { MODKEY|ShiftMask,             XK_Return, spawn,          SHCMD("alacritty") },
+    { MODKEY|ShiftMask,             XK_Return, spawn,          SHCMD("st") },
     { MODKEY,                       XK_b,      togglebar,      {0} },
     { MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
     { MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
